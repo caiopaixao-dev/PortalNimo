@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-config = load_dotenv(".env.example") 
+environ = load_dotenv(".env.example") 
 
 class Config:
     """Configuração base"""
