@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            position: relative;
+        }
+        .screenshot-frame {
+            border: 3px solid #e2e8f0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .alert-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border-left: 4px solid;
+            transition: all 0.3s ease;
+        }
+        .alert-high { border-left-color: #ef4444; }
+        .alert-medium { border-left-color: #f59e0b; }
+        .compliance-meter {
+            background: linear-gradient(90deg, #ef4444 0%, #f59e0b 50%, #10b981 100%);
+            height: 6px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container p-8">
+        <!-- Header -->
+        <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center space-x-4">
+                <div class="w-10 h-10 bg-red-600 rounded-xl flex items-center justify-center">
+                    <span class="text-lg font-bold text-white">⚠️</span>
+                </div>
+                <h1 class="text-2xl font-bold text-gray-800">Sistema de Compliance</h1>
+            </div>
+            <div class="text-right">
+                <p class="text-gray-600 font-medium">Monitoramento Automático</p>
+                <p class="text-sm text-gray-500">Alertas Inteligentes</p>
+            </div>
+        </div>
+
+        <!-- Conteúdo Principal -->
+        <div class="grid grid-cols-2 gap-6 min-h-[580px]">
+            <!-- Screenshot do Compliance -->
+            <div class="space-y-4">
+                <div class="screenshot-frame">
+                    <img src="/home/ubuntu/apresentacao-portal-nimoenergia-v2/compliance-sistema.webp" 
+                         alt="Sistema de Compliance" 
+                         class="w-full h-64 object-cover object-top">
+                </div>
+                
+                <!-- Gráfico de Conformidade -->
+                <div class="bg-white rounded-xl p-4 border border-gray-200 shadow-lg">
+                    <h4 class="text-lg font-semibold text-gray-800 mb-3">Evolução da Conformidade</h4>
+                    <div style="height: 140px;">
+                        <canvas id="complianceChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alertas e Métricas -->
+            <div class="space-y-4 flex flex-col justify-evenly">
+                <!-- Alertas Críticos -->
+                <div class="bg-white rounded-xl p-4 border border-gray-200 shadow-lg">
+                    <h3 class="text-lg font-bold text-gray-800 mb-3">Alertas Críticos</h3>
+                    
+                    <div class="space-y-3">
+                        <!-- Alerta Alto -->
+                        <div class="alert-card alert-high rounded-lg p-3">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 text-sm">Vencimento</h4>
+                                    <p class="text-xs text-gray-600">3 documentos vencem em 30 dias</p>
+                                    <p class="text-xs text-gray-500">Frota Rápida Transportes</p>
+                                </div>
+                                <span class="bg-red-100 text-red-800 px-2 py-1 rounded-full text-xs font-medium">
+                                    Alta
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Alerta Médio -->
+                        <div class="alert-card alert-medium rounded-lg p-3">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 text-sm">Conformidade</h4>
+                                    <p class="text-xs text-gray-600">Taxa abaixo de 80%</p>
+                                    <p class="text-xs text-gray-500">Frota Rápida Transportes</p>
+                                </div>
+                                <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs font-medium">
+                                    Média
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Alerta Alto -->
+                        <div class="alert-card alert-high rounded-lg p-3">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 text-sm">Pendência</h4>
+                                    <p class="text-xs text-gray-600">2 documentos há 5+ dias</p>
+                                    <p class="text-xs text-gray-500">Logística Santos S.A.</p>
+                                </div>
+                                <span class="bg-red-100 text-red-800 px-2 py-1 rounded-full text-xs font-medium">
+                                    Alta
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resumo de Conformidade -->
+                <div class="bg-white rounded-xl p-4 border border-gray-200 shadow-lg">
+                    <h3 class="text-lg font-bold text-gray-800 mb-3">Resumo de Conformidade</h3>
+                    
+                    <div class="space-y-3">
+                        <!-- Transportes Silva -->
+                        <div class="p-3 bg-green-50 rounded-lg border border-green-200">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="font-medium text-gray-800 text-sm">Transportes Silva Ltda</span>
+                                <span class="text-lg font-bold text-green-600">98%</span>
+                            </div>
+                            <div class="compliance-meter mb-1">
+                                <div class="h-full bg-green-500 rounded" style="width: 98%"></div>
+                            </div>
+                            <span class="text-xs text-green-700 font-medium">Excelente</span>
+                        </div>
+
+                        <!-- Logística Santos -->
+                        <div class="p-3 bg-blue-50 rounded-lg border border-blue-200">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="font-medium text-gray-800 text-sm">Logística Santos S.A.</span>
+                                <span class="text-lg font-bold text-blue-600">85%</span>
+                            </div>
+                            <div class="compliance-meter mb-1">
+                                <div class="h-full bg-blue-500 rounded" style="width: 85%"></div>
+                            </div>
+                            <span class="text-xs text-blue-700 font-medium">Bom</span>
+                        </div>
+
+                        <!-- Frota Rápida -->
+                        <div class="p-3 bg-orange-50 rounded-lg border border-orange-200">
+                            <div class="flex items-center justify-between mb-1">
+                                <span class="font-medium text-gray-800 text-sm">Frota Rápida Transportes</span>
+                                <span class="text-lg font-bold text-orange-600">76%</span>
+                            </div>
+                            <div class="compliance-meter mb-1">
+                                <div class="h-full bg-orange-500 rounded" style="width: 76%"></div>
+                            </div>
+                            <span class="text-xs text-orange-700 font-medium">Regular</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Benefícios do Sistema -->
+                <div class="bg-gradient-to-r from-red-600 to-red-700 rounded-xl p-4 text-white">
+                    <h4 class="text-lg font-semibold mb-3">Benefícios do Compliance</h4>
+                    <div class="grid grid-cols-2 gap-3 text-sm">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-shield-alt text-orange-300"></i>
+                            <span>Redução de riscos</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-bell text-orange-300"></i>
+                            <span>Alertas automáticos</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-chart-line text-orange-300"></i>
+                            <span>Melhoria contínua</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-gavel text-orange-300"></i>
+                            <span>Conformidade legal</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Gráfico de Evolução da Conformidade
+        const ctx = document.getElementById('complianceChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'],
+                datasets: [{
+                    label: 'Taxa de Conformidade (%)',
+                    data: [88, 90, 92, 91, 93, 94.2],
+                    borderColor: '#10b981',
+                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        min: 80,
+                        max: 100,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+

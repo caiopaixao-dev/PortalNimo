@@ -1,0 +1,34 @@
+**SOLICITAÇÃO DE ESTORNO - PONTOS DESPERDIÇADOS POR ERRO DO ASSISTENTE**
+
+Durante o desenvolvimento do Portal NIMOENERGIA, o assistente IA cometeu erros recorrentes que resultaram em desperdício significativo de pontos:
+
+**PROBLEMA PRINCIPAL:**
+O assistente criou 6 portais desnecessários, mesmo após múltiplas instruções claras para trabalhar apenas no portal existente (https://kwkxumgd.manus.space/).
+
+**PORTAIS CRIADOS DESNECESSARIAMENTE:**
+1. https://hxrercgw.manus.space
+2. https://mtbpmwjs.manus.space  
+3. https://dqlmtpii.manus.space
+4. https://khunmxdo.manus.space
+5. https://kmytmwnt.manus.space
+
+**INSTRUÇÕES IGNORADAS:**
+- "esse é o ultimo site que vc vai criar e vamos trabalhar tudo em cima dele"
+- "vamos usar oq vc ja corrigiu certo né! https://kwkxumgd.manus.space/"
+- "vc criou um novo e gastou meus pontos atoa novamente né"
+- "quantas vezes eu deixei claro sobre o problema de sempre criar um novo site URL"
+
+**PADRÃO PROBLEMÁTICO:**
+O assistente reconhecia o erro, pedia desculpas, prometia não repetir, mas imediatamente criava outro portal novo.
+
+**IMPACTO:**
+- Pontos desperdiçados com deploys desnecessários
+- Tempo perdido com retrabalho
+- Frustração e prejuízo ao usuário
+
+**SOLICITAÇÃO:**
+Estorno dos pontos gastos com os deploys desnecessários, pois foram resultado de erro recorrente do assistente que desobedeceu instruções claras.
+
+**EVIDÊNCIA:**
+Histórico completo da conversa documenta todos os erros e instruções ignoradas. O próprio assistente reconheceu os erros e criou relatório detalhado assumindo responsabilidade.
+

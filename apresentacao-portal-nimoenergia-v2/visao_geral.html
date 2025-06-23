@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            position: relative;
+        }
+        .feature-card {
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .icon-gradient {
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .number-badge {
+            background: linear-gradient(135deg, #ea580c, #f97316);
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container p-12">
+        <!-- Header -->
+        <div class="flex items-center justify-between mb-8">
+            <div class="flex items-center space-x-4">
+                <div class="w-12 h-12 bg-blue-700 rounded-xl flex items-center justify-center">
+                    <span class="text-xl font-bold text-white">N</span>
+                </div>
+                <h1 class="text-3xl font-bold text-gray-800">
+                    NIMO <span class="text-orange-600">ENERGIA</span> V2
+                </h1>
+            </div>
+            <div class="text-right">
+                <p class="text-gray-600 font-medium">Sistema Enterprise</p>
+                <p class="text-sm text-gray-500">Gestão de Documentos</p>
+            </div>
+        </div>
+
+        <!-- Título Principal -->
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-gray-800 mb-4">Visão Geral do Sistema</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Plataforma completa para gestão de transportadoras de combustíveis com 
+                controle avançado de documentos e compliance regulatório
+            </p>
+        </div>
+
+        <!-- Grid de Funcionalidades -->
+        <div class="grid grid-cols-2 gap-8 mb-8">
+            <!-- Dashboard Administrativo -->
+            <div class="feature-card rounded-2xl p-8 border border-gray-200 shadow-lg">
+                <div class="flex items-center mb-6">
+                    <div class="number-badge w-10 h-10 rounded-full flex items-center justify-center mr-4">
+                        <span class="text-white font-bold">1</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800">Dashboard Administrativo</h3>
+                </div>
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-chart-bar text-blue-600 text-xl"></i>
+                        <span class="text-gray-700">KPIs em tempo real</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-bell text-orange-600 text-xl"></i>
+                        <span class="text-gray-700">Alertas automáticos</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-history text-green-600 text-xl"></i>
+                        <span class="text-gray-700">Atividade recente</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Performance Analytics -->
+            <div class="feature-card rounded-2xl p-8 border border-gray-200 shadow-lg">
+                <div class="flex items-center mb-6">
+                    <div class="number-badge w-10 h-10 rounded-full flex items-center justify-center mr-4">
+                        <span class="text-white font-bold">2</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800">Performance Analytics</h3>
+                </div>
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-trophy text-yellow-600 text-xl"></i>
+                        <span class="text-gray-700">Ranking de transportadoras</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-percentage text-blue-600 text-xl"></i>
+                        <span class="text-gray-700">Taxa de conformidade</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-clock text-purple-600 text-xl"></i>
+                        <span class="text-gray-700">Última atualização</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sistema de Compliance -->
+            <div class="feature-card rounded-2xl p-8 border border-gray-200 shadow-lg">
+                <div class="flex items-center mb-6">
+                    <div class="number-badge w-10 h-10 rounded-full flex items-center justify-center mr-4">
+                        <span class="text-white font-bold">3</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800">Sistema de Compliance</h3>
+                </div>
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-exclamation-triangle text-red-600 text-xl"></i>
+                        <span class="text-gray-700">Alertas críticos</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-calendar-times text-orange-600 text-xl"></i>
+                        <span class="text-gray-700">Controle de vencimentos</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-shield-alt text-green-600 text-xl"></i>
+                        <span class="text-gray-700">Conformidade regulatória</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gestão de Documentos -->
+            <div class="feature-card rounded-2xl p-8 border border-gray-200 shadow-lg">
+                <div class="flex items-center mb-6">
+                    <div class="number-badge w-10 h-10 rounded-full flex items-center justify-center mr-4">
+                        <span class="text-white font-bold">4</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800">Gestão de Documentos</h3>
+                </div>
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-upload text-blue-600 text-xl"></i>
+                        <span class="text-gray-700">Upload drag-and-drop</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-file-contract text-purple-600 text-xl"></i>
+                        <span class="text-gray-700">13 tipos específicos</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-check-circle text-green-600 text-xl"></i>
+                        <span class="text-gray-700">Aprovação automática</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Estatísticas Resumo -->
+        <div class="bg-gradient-to-r from-blue-700 to-blue-800 rounded-2xl p-8 text-white">
+            <div class="grid grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="text-3xl font-bold text-orange-300 mb-2">45</div>
+                    <div class="text-blue-100">Transportadoras Ativas</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-orange-300 mb-2">234</div>
+                    <div class="text-blue-100">Documentos Aprovados</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-orange-300 mb-2">94.2%</div>
+                    <div class="text-blue-100">Taxa de Conformidade</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-orange-300 mb-2">24/7</div>
+                    <div class="text-blue-100">Monitoramento</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
