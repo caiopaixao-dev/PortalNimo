@@ -5,7 +5,7 @@ import './styles-melhorias.css'
 import './styles-cadastro.css'
 
 // Configuração da API
-const API_BASE_URL = 'https://portal.herokuapp.com/api'
+const API_BASE_URL = 'https://nimoenergia-api.herokuapp.com/api'
 
 
 // Funções de API
