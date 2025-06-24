@@ -5,7 +5,8 @@ import './styles-melhorias.css'
 import './styles-cadastro.css'
 
 // Configuração da API
-const API_BASE_URL = 'http://localhost:5000/api'
+const API_BASE_URL = 'https://portal.herokuapp.com/api'
+
 
 // Funções de API
 const api = {
